@@ -1,0 +1,19 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Package Files
+*.jar
+
+# Maven
+log/
+target/
+
+# Other
+.classpath
+.project
+.settings/
+.idea/
+.editorconfig
