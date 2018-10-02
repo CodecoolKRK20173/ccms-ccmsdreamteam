@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mentors>
+    <mentor login="mentor1">
+        <name>Mentor1Name</name>
+        <surname>Mentor1Surname</surname>
+        <email>mentor1.email@codecool.com</email>
+        <phoneNumberPrefix>+48</phoneNumberPrefix>
+        <phoneNumber>999999999</phoneNumber>
+    </mentor>
+    <mentor login="mentor2">
+        <name>Mentor2Name</name>
+        <surname>Mentor2Surname</surname>
+        <email>mentor2.email@codecool.com</email>
+        <phoneNumberPrefix>+48</phoneNumberPrefix>
+        <phoneNumber>999999999</phoneNumber>
+    </mentor>
+</mentors>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<students>
+    <student login="chudyByk">
+        <name>Stanisław</name>
+        <surname>Wyrobek</surname>
+        <email>st.wyrobek@gmail.com</email>
+        <phoneNumberPrefix>+48</phoneNumberPrefix>
+        <phoneNumber>600252436</phoneNumber>
+    </student>
+    <student login="jodła">
+        <name>Krzysztof</name>
+        <surname>Jodłowski</surname>
+        <email>krzysztof.sjodlowski@gmail.com</email>
+        <phoneNumberPrefix>+48</phoneNumberPrefix>
+        <phoneNumber>600374763</phoneNumber>
+    </student>
+</students>
