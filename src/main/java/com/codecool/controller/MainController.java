@@ -10,7 +10,7 @@ public class MainController {
     private View view;
 
     public MainController() {
-        view = new View();
+        this.view = new View();
     }
 
     public void run() {
