@@ -17,13 +17,13 @@ public class LoginController {
         return loginDao.checkPassword(userLogin, userPassword);
     }
     public User getUser(String login) {
-        User user;
         List<String> userParameters = loginDao.getUserDataList(login);
         String userType = userParameters.get(0);
         String userLogin = userParameters.get(1);
         String userName = userParameters.get(2);
         String userSurname = userParameters.get(3);
         String userPassword = userParameters.get(4);
+        User user = new Student(userLogin, userName, userSurname, userPassword);    // Should not be initialized, but must be initialized:(
 
         if (userType.equals("boss")) {
             user = new Boss(userLogin, userName, userSurname, userPassword);

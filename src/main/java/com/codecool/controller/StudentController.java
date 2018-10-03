@@ -49,7 +49,7 @@ public class StudentController {
     List<Assignment> assignmentList = new ArrayList<>();
 
     public void submitAssignment(String assignmentTittle, String assignmentLink) {
-        Assignment assignment = new Assignment(assignmentTittle, assignmentLink);
+        Assignment assignment = new Assignment(assignmentTittle, assignmentLink, "status", "note");     // Student should not make new assignments - student should operate on assignment from dataAssignmentList!!!
         assignmentList.add(assignment);
     }
 

@@ -26,7 +26,7 @@ public class LoginDAO implements LoginDAOinter {
 
     private void parseXMLToDocument() {
         try {
-            File userDataXML = openFile("/src/main/resources/UserData.xml");
+            File userDataXML = openFile("src/main/resources/UserData.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = dbFactory.newDocumentBuilder();
             userData = documentBuilder.parse(userDataXML);
