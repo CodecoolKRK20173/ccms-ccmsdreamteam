@@ -15,6 +15,10 @@ public class StudentList {
     private String nameXmlFile = "src/main/resources/UserData.xml";
     private List<Student> listOfStudent;
 
+    public StudentList(){
+        loadStudentFromXml();
+    }
+
     public List<Student> getListOfStudent(){
         return this.listOfStudent;
     }
