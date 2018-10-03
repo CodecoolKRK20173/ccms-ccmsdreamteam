@@ -15,6 +15,8 @@ public class StudentList {
     private String nameXmlFile = "src/main/resources/UserData.xml";
     private List<Student> listOfStudent;
 
+
+
     public void loadStudentFromXml(){
         try {
             File productFile = new File(nameXmlFile);
@@ -41,6 +43,7 @@ public class StudentList {
                     String studentPassword = eElement.getElementsByTagName("password").item(0).getTextContent();
 
                     Student student = new Student(id, studentName, studentSurname, studentPassword);
+                    listOfStudent.add(student);
                 }
 
             }
