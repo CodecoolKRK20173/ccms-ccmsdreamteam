@@ -1,4 +1,4 @@
 package com.codecool.model;
 
-public class Boss extends Employee {
+public class Boss extends User {
 }
