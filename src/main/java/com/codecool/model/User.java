@@ -3,10 +3,8 @@ package com.codecool.model;
 public abstract class User {
 
     String login;
-
     String name;
     String surname;
-
     String password;
 
     public User(String login, String name, String surname, String password) {
