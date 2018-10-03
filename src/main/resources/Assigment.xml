@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<students>
+    <student login="chudyByk">
+        <assignments>
+            <assignment name="assignment1" status="Waiting for submission">
+                <linkToRepository>www.github.com/repo1</linkToRepository>
+                <note>0</note>
+            </assignment>
+        </assignments>
+    </student>
+    <student login="jodła">
+        <assignments>
+            <assignment name="assignment1" status="Waiting for submission">
+                <linkToRepository>www.github.com/repo2</linkToRepository>
+                <note>0</note>
+            </assignment>
+        </assignments>
+    </student>
+</students>

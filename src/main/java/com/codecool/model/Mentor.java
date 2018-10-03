@@ -1,8 +1,4 @@
 package com.codecool.model;
 
-public class Mentor extends Employee {
-
-
-
-
+public class Mentor extends User {
 }
