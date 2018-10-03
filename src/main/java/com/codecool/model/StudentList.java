@@ -13,11 +13,15 @@ import java.util.List;
 public class StudentList {
 
     private String nameXmlFile = "src/main/resources/UserData.xml";
-    private List<Student> listOfStudent;
+    private List<User> listOfStudent;
 
-
-
-    public void loadStudentFromXml(){
+    public StudentList(){
+        loadStudentFromXml();
+    }
+    public List<User> getListOfStudent(){
+        return this.listOfStudent;
+    }
+    private void loadStudentFromXml(){
         try {
             File productFile = new File(nameXmlFile);
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();

@@ -20,7 +20,7 @@ public class RegularEmployeeControler {
 
     public void manageRegularEmployee() {
         List<User> listOfStudents;
-        String[] regulaEmployeeMenu = { "List students",
+        String[] regularEmployeeMenu = { "List students",
                                         "Log out"};
         int seeListOfStudents = 1;
         int logOutOption = 2;
@@ -28,11 +28,11 @@ public class RegularEmployeeControler {
 
         view.printWelcomeUser(regularEmployee.toString());
         while (!exit) {
-            view.printMenuForUser(regulaEmployeeMenu);
+            view.printMenuForUser(regularEmployeeMenu);
             int userMenuOption = view.getUserMenuOption();
             if (userMenuOption == seeListOfStudents) {
-                // listOfStudents = regularEmployeeDAO.loadStudentsFromXML();
-                // view.printListOfUsers(listOfStudents);
+                listOfStudents = regularEmployeeDAO.getListOfStudent();
+                view.printListOfUsers(listOfStudents);
             } else if (userMenuOption == logOutOption) {
                 exit = true;
             } else {
