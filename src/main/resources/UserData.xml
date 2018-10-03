@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<users>
+    <mentors>
+        <mentor login="mentor1">
+            <name>Mentor1Name</name>
+            <surname>Mentor1Surname</surname>
+            <password>razdwa</password>
+        </mentor>
+        <mentor login="mentor2">
+            <name>Mentor2Name</name>
+            <surname>Mentor2Surname</surname>
+            <password>trzycztery</password>
+        </mentor>
+    </mentors>
+    <students>
+        <student login ="ja">
+            <name>Stanisław</name>
+            <surname>Wyrobek</surname>
+            <password>heheheh</password>
+        </student>
+    </students>
+    <employees>
+        <employee login="pracownik">
+            <name>Jan</name>
+            <surname>Kowalski</surname>
+            <password>madzia123</password>
+        </employee>
+    </employees>
+    <admins>
+        <admin login="admin">
+            <name>Jerzy</name>
+            <Surname>Niewiem</Surname>
+            <password>admin</password>
+        </admin>
+    </admins>
+</users>
