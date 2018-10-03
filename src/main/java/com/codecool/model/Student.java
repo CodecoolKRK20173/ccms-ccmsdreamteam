@@ -6,8 +6,9 @@ import java.util.List;
 public class Student extends User {
 
 
-    public Student() {
-        super();
+    public Student(String id, String studentName, String studentSurname, String studentPassword) {
+
+        super(id, studentName, studentSurname, studentPassword);
     }
     
 }
