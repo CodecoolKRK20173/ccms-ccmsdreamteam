@@ -1,6 +1,7 @@
 package com.codecool.model;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -25,11 +26,22 @@ public class StudentList {
 
             String users = doc.getDocumentElement().getNodeName();
 
-            NodeList mentorsList = doc.getElementsByTagName("mentors");
-            NodeList mentorElementsList = doc.getElementsByTagName("mentor");
+            NodeList studentsList = doc.getElementsByTagName("students");
+            NodeList studentElementsList = doc.getElementsByTagName("student");
 
-            for (int i = 0; i < mentorElementsList.getLength(); i++){
-                Node nNode = mentorElementsList.item(i);
+            for (int i = 0; i < studentElementsList.getLength(); i++){
+                Node nNode = studentElementsList.item(i);
+
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element eElement = (Element) nNode;
+
+                    String id = eElement.getAttribute("ID");
+                    String studentName = eElement.getElementsByTagName("name").item(0).getTextContent();
+                    String studentSurname = eElement.getElementsByTagName("surname").item(0).getTextContent();
+                    String studentPassword = eElement.getElementsByTagName("password").item(0).getTextContent();
+
+                    Student student = new Student();
+                }
 
 
 
