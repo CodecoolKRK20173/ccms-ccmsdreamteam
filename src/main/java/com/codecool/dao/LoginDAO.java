@@ -15,7 +15,7 @@ public class LoginDAO implements LoginDAOinter {
 
     private Document userData;
 
-    LoginDAO() {
+    public LoginDAO() {
         parseXMLToDocument();
     }
 

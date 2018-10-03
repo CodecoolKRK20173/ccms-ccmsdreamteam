@@ -14,6 +14,15 @@ public class View {
         System.out.println("1.Log In\n2.Exit");
         printGetOption();
     }
+    public void printInputLogin() {
+        System.out.print("Input user login: ");
+    }
+    public void printInputPassword() {
+        System.out.print("Input user password: ");
+    }
+    public void printUserLoginPasswordError() {
+        System.out.println("User login or password is incorrect!");
+    }
     public void printMenuForUser(String[] userMenu){
         for (int i = 0; i < userMenu.length; i++) {
             System.out.println("(" + (i + 1) + ") " + userMenu[i]);
@@ -47,6 +56,19 @@ public class View {
             }
         }
         return userInput;
+    }
+    public String getUserLogin() {
+        Scanner scanner = new Scanner(System.in);
+        String userInput = "";
+        try {
+            userInput = scanner.next();
+        } catch (InputMismatchException e) {
+            printErrorInputMessage();
+        }
+        return userInput;
+    }
+    public String getUserPassword() {
+        return getUserLogin();
     }
     public void printErrorInputMessage() {
         System.out.println("Provide proper input!");
