@@ -40,7 +40,7 @@ public class StudentList {
                     String studentSurname = eElement.getElementsByTagName("surname").item(0).getTextContent();
                     String studentPassword = eElement.getElementsByTagName("password").item(0).getTextContent();
 
-                    Student student = new Student();
+                    Student student = new Student(id, studentName, studentSurname, studentPassword);
                 }
 
 
