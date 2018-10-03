@@ -6,7 +6,7 @@ public class BossController {
                                 "Remove mentor",
                                 "Edit mentor",
                                 "List mentors",
-                                "List students"
+                                "List students",
                                 "Log out"};
 
 
