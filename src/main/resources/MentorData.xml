@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mentors>
+    <mentor>
+        <login>Marek</login>
+        <name>Marek Grzybek</name>
+    </mentor>
+    <mentor>
+        <login>Aga</login>
+        <name>Aga Koszany</name>
+    </mentor>
+</mentors>
