@@ -43,17 +43,11 @@ public class StudentList {
                     Student student = new Student(id, studentName, studentSurname, studentPassword);
                 }
 
-
-
-
             }
-
-
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
 }
