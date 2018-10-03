@@ -41,12 +41,12 @@ public class StudentList {
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
 
-                    String id = eElement.getAttribute("ID");
+                    String login = eElement.getAttribute("login");
                     String studentName = eElement.getElementsByTagName("name").item(0).getTextContent();
                     String studentSurname = eElement.getElementsByTagName("surname").item(0).getTextContent();
                     String studentPassword = eElement.getElementsByTagName("password").item(0).getTextContent();
 
-                    Student student = new Student(id, studentName, studentSurname, studentPassword);
+                    Student student = new Student(login, studentName, studentSurname, studentPassword);
                     listOfStudent.add(student);
                 }
 
