@@ -27,6 +27,14 @@ public abstract class User {
         return this.surname;
     }
 
+    public String getLogin() {
+        return this.login;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
 
 
 }

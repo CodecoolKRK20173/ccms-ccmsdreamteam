@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<users>
+<?xml version="1.0" encoding="utf-8" standalone="no"?><users>
     <mentors>
         <mentor login="mentor1">
             <name>Mentor1Name</name>
             <surname>Mentor1Surname</surname>
             <password>razdwa</password>
-        </mentor>
+        <mentor login="Piotrek"><name>Piotr</name><surname>Mentorowicz</surname><password>java8</password></mentor></mentor>
         <mentor login="mentor2">
             <name>Mentor2Name</name>
             <surname>Mentor2Surname</surname>
@@ -13,11 +12,11 @@
         </mentor>
     </mentors>
     <students>
-        <student login ="ja">
+        <student login="ja">
             <name>Stanisław</name>
             <surname>Wyrobek</surname>
             <password>heheheh</password>
-        </student>
+        <student login="Johnyy"><name>John</name><surname>Terry</surname><password>chelsea</password></student></student>
     </students>
     <employees>
         <employee login="pracownik">
