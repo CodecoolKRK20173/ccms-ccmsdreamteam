@@ -22,29 +22,18 @@ public class BossDAO implements BossDAOinter{
     public List<User> getMentorsList() {
 
         List<User> mentorsList = new ArrayList<User>();
-
         Element root = prepareRootElement();
         NodeList nodes = root.getChildNodes();
 
         for (int i = 0; i < nodes.getLength(); i++) {
-
             Node node = nodes.item(i);
-
-            if (node instanceof Element) {
-
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element element = (Element) node;
-
                 NodeList mentors = element.getElementsByTagName("mentor");
-
                 for (int j = 0; j < mentors.getLength(); j++) {
-
                     Node nodeMentor = mentors.item(j);
-
                     if (nodeMentor instanceof Element) {
-
-
                         Element mentorData = (Element) nodeMentor;
-
                         String login = mentorData.getAttribute("login");
                         String name = mentorData.getElementsByTagName("name").item(0).getTextContent();
                         String surname = mentorData.getElementsByTagName("surname").item(0).getTextContent();
