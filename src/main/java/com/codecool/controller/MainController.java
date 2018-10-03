@@ -32,8 +32,7 @@ public class MainController {
 //        }
 
         BossDAO dao = new BossDAO();
-        dao.addUserToDataBase(new Mentor("Piotrek", "Piotr", "Mentorowicz", "java8"), "mentor");
-        dao.addUserToDataBase(new Student("Johnyy", "John", "Terry", "chelsea"), "student");
+        dao.removeUserFromDataBase("Johnyy", "student");
 
     }
     private void manageUser() {

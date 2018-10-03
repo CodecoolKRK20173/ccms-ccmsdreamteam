@@ -222,6 +222,68 @@ public class BossDAO implements BossDAOinter{
         }
 
 
+        public void removeUserFromDataBase(String login, String type) {
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            Document document = null;
+            try {
+                document = dbf.newDocumentBuilder().parse("src/main/resources/UserData.xml");
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SAXException e) {
+                e.printStackTrace();
+            }
+
+            Element users = document.getDocumentElement();
+            NodeList usersList = users.getElementsByTagName(type);
+
+            for (int i = 0; i < usersList.getLength(); i++) {
+
+                Node node = usersList.item(i);
+
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+
+
+                    Element toRemove = (Element) node;
+                     if (toRemove.getTagName().equals(type)) {
+
+                         if (toRemove.hasAttribute("login")) {
+
+
+                             if (toRemove.getAttribute("login").equals(login)) {
+                                 System.out.println("weszlo");
+                                 Element countOfRemove = (Element) users.getElementsByTagName(type).item(0);
+                                 countOfRemove.removeChild(node);
+                             }
+                         }
+                     }
+
+
+                }
+
+            }
+
+            DOMSource source = new DOMSource(document);
+
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = null;
+            try {
+                transformer = transformerFactory.newTransformer();
+            } catch (TransformerConfigurationException e) {
+                e.printStackTrace();
+            }
+            StreamResult result = new StreamResult("src/main/resources/UserData.xml");
+            try {
+                transformer.transform(source, result);
+            } catch (TransformerException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+
 
 
 }

@@ -4,7 +4,7 @@
             <name>Mentor1Name</name>
             <surname>Mentor1Surname</surname>
             <password>razdwa</password>
-        <mentor login="Piotrek"><name>Piotr</name><surname>Mentorowicz</surname><password>java8</password></mentor></mentor>
+        </mentor>
         <mentor login="mentor2">
             <name>Mentor2Name</name>
             <surname>Mentor2Surname</surname>
@@ -16,7 +16,7 @@
             <name>Stanisław</name>
             <surname>Wyrobek</surname>
             <password>heheheh</password>
-        <student login="Johnyy"><name>John</name><surname>Terry</surname><password>chelsea</password></student></student>
+        </student>
     </students>
     <employees>
         <employee login="pracownik">
