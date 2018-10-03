@@ -4,12 +4,16 @@ public class Assignment implements Gradeable {
 
     private String assignmentTittle;
     private String assignmentLink;
+    private String status;
+    private String note;
     private boolean isGraded;
     private boolean grade;
 
-    public Assignment(String assignmentTittle, String assignmentLink) {
+    public Assignment(String assignmentTittle, String assignmentLink, String status, String note) {
         this.assignmentTittle = assignmentTittle;
         this.assignmentLink = assignmentLink;
+        this.status = status;
+        this.note = note;
     }
 
     public Assignment(String assignmentTittle) {
@@ -50,5 +54,9 @@ public class Assignment implements Gradeable {
 
     public void setGrade(boolean grade) {
         this.grade = grade;
+    }
+
+    public String getStatus() {
+        return this.status;
     }
 }

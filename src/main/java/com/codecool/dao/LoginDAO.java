@@ -44,7 +44,6 @@ public class LoginDAO implements LoginDAOinter {
         return new File(filePath);
     }
 
-
     @Override
     public boolean checkPassword(String login, String potentialPassword) {
         boolean isPasswordCorrect = false;
