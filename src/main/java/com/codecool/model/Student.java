@@ -1,14 +1,16 @@
 package com.codecool.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Student extends User {
 
-
-    public Student(String id, String studentName, String studentSurname, String studentPassword) {
-
-        super(id, studentName, studentSurname, studentPassword);
+    public Student(String login, String name, String surname, String password) {
+        super(login, name, surname, password);
     }
-    
+
+    public void submitAssigment(){
+
+    }
+
+    public void viewGrades(){
+
+    }
 }

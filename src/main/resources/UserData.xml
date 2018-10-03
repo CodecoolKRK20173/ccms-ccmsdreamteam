@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<users>
+<?xml version="1.0" encoding="utf-8" standalone="no"?><users>
     <mentors>
         <mentor login="mentor1">
             <name>Mentor1Name</name>
@@ -13,7 +12,7 @@
         </mentor>
     </mentors>
     <students>
-        <student login ="ja">
+        <student login="ja">
             <name>Stanisław</name>
             <surname>Wyrobek</surname>
             <password>heheheh</password>
