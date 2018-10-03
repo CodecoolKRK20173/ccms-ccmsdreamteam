@@ -11,6 +11,8 @@ public class RegularEmployeeControler {
     private RegularEmployeeDAOinter regularEmployeeDAO;
     private User regularEmployee;
     private View view;
+    private final String[] regularEmployeeMenu = { "List students",
+                                                   "Log out"};
 
     public RegularEmployeeControler(User regularEmployeeUser) {
         this.regularEmployee = regularEmployeeUser;
@@ -20,15 +22,13 @@ public class RegularEmployeeControler {
 
     public void manageRegularEmployee() {
         List<User> listOfStudents;
-        String[] regularEmployeeMenu = { "List students",
-                                        "Log out"};
         int seeListOfStudents = 1;
         int logOutOption = 2;
         boolean exit = false;
 
         view.printWelcomeUser(regularEmployee.toString());
         while (!exit) {
-            view.printMenuForUser(regularEmployeeMenu);
+            view.printMenuForUser(this.regularEmployeeMenu);
             int userMenuOption = view.getUserMenuOption();
             if (userMenuOption == seeListOfStudents) {
                 listOfStudents = regularEmployeeDAO.getListOfStudent();

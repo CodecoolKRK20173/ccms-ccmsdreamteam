@@ -4,16 +4,15 @@ import com.codecool.controller.BossController;
 import com.codecool.controller.MentorController;
 import com.codecool.controller.RegularEmployeeControler;
 import com.codecool.controller.StudentController;
-import com.codecool.model.Boss;
-import com.codecool.model.Mentor;
-import com.codecool.model.RegularEmployee;
-import com.codecool.model.Student;
+import com.codecool.model.*;
 import com.codecool.view.View;
 
 public class MainController {
+    private LoginController loginController;
     private View view;
 
     public MainController() {
+        loginController = new LoginController();
         this.view = new View();
     }
 
@@ -26,7 +25,7 @@ public class MainController {
             view.printMainMenu();
             int userMenuOption = view.getUserMenuOption();
             if (userMenuOption == logInOption) {
-                manageUser();
+                manageUserSession();
             } else if (userMenuOption == exitOption) {
                 exit = true;
             } else {
@@ -34,17 +33,38 @@ public class MainController {
             }
         }
     }
-    private void manageUser() {
-//        User user = new LoginController().getUser();
-//        if (user instanceof Boss) {
-//            new BossController(user).manageBoss();
-//        } else if (user instanceof Mentor) {
-//            new MainController(user).manageMentor();
-//        } else if (user instanceof RegularEmployee) {
-//            new RegularEmployeeController(user).manageRegularEmployee();
-//        } else if (user instanceof Student) {
-//            new StudentController(user).manageStudent();
-//        }
+    private void manageUserSession() {
+        String login = validateUserPassword();
+        createUserSession(login);
+    }
+    private String validateUserPassword() {
+        String userLogin = "";
+        boolean isLoginPasswordCorrect = false;
+
+        while (!isLoginPasswordCorrect) {
+            view.printInputLogin();
+            userLogin = view.getUserLogin();
+            view.printInputPassword();
+            String userPassword = view.getUserPassword();
+            isLoginPasswordCorrect = loginController.checkUserExistence(userLogin, userPassword);
+            if (!isLoginPasswordCorrect) {
+                view.printUserLoginPasswordError();
+            }
+        }
+        return userLogin;
+    }
+    private void createUserSession(String login) {
+        User user = loginController.getUser(login);
+
+        if (user instanceof Boss) {
+            new BossController(user).manageBoss();
+        } else if (user instanceof Mentor) {
+            new MentorController(user).manageMentor();
+        } else if (user instanceof RegularEmployee) {
+            new RegularEmployeeControler(user).manageRegularEmployee();
+        } else if (user instanceof Student) {
+            new StudentController(user).manageStudent();
+        }
     }
 }
 
