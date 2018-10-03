@@ -1,4 +1,6 @@
 package com.codecool.dao;
 
-public class RegularEmployeeDAO implements RegularEmployeeDAOinter {
+import com.codecool.model.StudentList;
+
+public class RegularEmployeeDAO extends StudentList implements RegularEmployeeDAOinter {
 }

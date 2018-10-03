@@ -9,12 +9,12 @@ public class StudentController {
 
     List<Assignment> assignmentList = new ArrayList<>();
 
-    public void submitAssigment(String assignmentTittle, String assignmentLink) {
+    public void submitAssignment(String assignmentTittle, String assignmentLink) {
         Assignment assignment = new Assignment(assignmentTittle, assignmentLink);
         assignmentList.add(assignment);
     }
 
-    public List getDataAssigmentList() {
+    public List getDataAssignmentList() {
         List<String> dataAssignmentList = new ArrayList<>();
         for (Assignment assignment : assignmentList) {
             dataAssignmentList.add(assignment.getAssignmentTittle());
@@ -29,6 +29,7 @@ public class StudentController {
 
             } else {
                 dataAssignmentList.add("Not Graded");
+                dataAssignmentList.add("Not passed");
             }
         }
 
@@ -36,3 +37,5 @@ public class StudentController {
 
     }
 }
+
+

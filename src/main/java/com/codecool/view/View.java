@@ -5,27 +5,9 @@ import com.codecool.model.User;
 import java.util.List;
 
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 public class View {
-
-
-    public void printMenuForUser(String[] userMenu){
-        for (int i = 0; i < userMenu.length; i++) {
-            System.out.println("(" + (i + 1) + ") " + userMenu[i]);
-        }
-    }
-
-    public void printListOfUsers(List<User> list) {
-        int num = 1;
-        for (User user : list) {
-            System.out.println("(" + num + ") " + user.getNameOfUser() + " " + user.getSurnameOfUser());
-            num ++;
-        }
-    }
-
-
 
     public void printMainMenu() {
         printHeader();
@@ -33,12 +15,41 @@ public class View {
         printGetOption();
     }
 
+    public void printMenuForUser(String[] userMenu) {
+        for (int i = 0; i < userMenu.length; i++) {
+            System.out.println("(" + (i + 1) + ") " + userMenu[i]);
+        }
+    }
+
+    public void printListOfUsers(List<User> listOfUsers) {
+        int num = 1;
+        for (User user : listOfUsers) {
+            System.out.println("(" + num + ") " + user.getNameOfUser() + " " + user.getSurnameOfUser());
+            num++;
+        }
+    }
+
+    public void printGradedAssigmentForStudent(List<String> dataAssignmentList) {
+        int num = 1;
+        for (int i = 0; i < dataAssignmentList.size(); i += 4) {
+            String tittle = dataAssignmentList.get(i);
+            String link = dataAssignmentList.get(i + 1);
+            String status = dataAssignmentList.get(i + 2);
+            String grade = dataAssignmentList.get(i + 3);
+            System.out.println("Tittle: " + tittle + " Link: " + link + " Status: " + status + " Grade: " + grade);
+
+        }
+
+    }
+
     private void printHeader() {
         System.out.println("CcMS - Codecool Management System");
     }
+
     private void printGetOption() {
         System.out.print("Choose option: ");
     }
+
     public int getUserMenuOption() {
         Scanner scanner = new Scanner(System.in);
         int userInput = 0;
@@ -55,9 +66,11 @@ public class View {
         }
         return userInput;
     }
+
     public void printErrorInputMessage() {
         System.out.println("Provide proper input!");
     }
+
     public void printWelcomeUser(String user) {
         System.out.println("Welcome" + user + "!");
     }

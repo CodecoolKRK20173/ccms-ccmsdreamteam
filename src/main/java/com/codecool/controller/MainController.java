@@ -1,5 +1,9 @@
 package com.codecool.controller;
 
+import com.codecool.controller.BossController;
+import com.codecool.controller.MentorController;
+import com.codecool.controller.RegularEmployeeControler;
+import com.codecool.controller.StudentController;
 import com.codecool.model.Boss;
 import com.codecool.model.Mentor;
 import com.codecool.model.RegularEmployee;
