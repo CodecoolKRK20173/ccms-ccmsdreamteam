@@ -1,13 +1,13 @@
 package com.codecool.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Student extends User {
 
 
-    public void submitAssigment(){
-
+    public Student() {
+        super();
     }
-
-    public void viewGrades(){
-
-    }
+    
 }
