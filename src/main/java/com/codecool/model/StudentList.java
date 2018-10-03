@@ -15,9 +15,12 @@ public class StudentList {
     private String nameXmlFile = "src/main/resources/UserData.xml";
     private List<Student> listOfStudent;
 
+    public List<Student> getListOfStudent(){
+        return this.listOfStudent;
+    }
 
 
-    public void loadStudentFromXml(){
+    private void loadStudentFromXml(){
         try {
             File productFile = new File(nameXmlFile);
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -52,5 +55,7 @@ public class StudentList {
             e.printStackTrace();
         }
     }
+
+
 
 }
