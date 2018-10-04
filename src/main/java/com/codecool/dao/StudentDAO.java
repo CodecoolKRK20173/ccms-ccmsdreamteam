@@ -43,6 +43,21 @@ public class StudentDAO implements StudentDAOinter {
         return new File(filePath);
     }
 
+    public void updateAssignmentLink(String login, String githublink) {
+        NodeList students = userData.getElementsByTagName("student");
+        Element student = searchForStudent(students, login);
+        if (student !=null) {
+            NodeList studentAssignments = student.getElementsByTagName("assignment");
+            for (int i=0; i<studentAssignments.getLength(); i++) {
+                Node studentNode = studentAssignments.item(i);
+                if (studentNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element studentElement = (Element) studentNode;
+                    studentElement.getElementsByTagName("linkToRepository").item(0).setTextContent(githublink);
+                }
+            }
+        }
+    }
+
     public List<Assignment> loadAssignments(String login) {
         List<Assignment> assignmentList = new ArrayList<>();
         NodeList students = userData.getElementsByTagName("student");
