@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?><users>
     <mentors>
-        <mentor login="mentor1">
-            <name>Mentor1Name</name>
-            <surname>Mentor1Surname</surname>
-            <password>razdwa</password>
-        </mentor>
-        <mentor login="mentor2">
-            <name>Mentor2Name</name>
-            <surname>Mentor2Surname</surname>
-            <password>trzycztery</password>
-        </mentor>
-    </mentors>
+        
+        
+    <mentor login="test">
+<name>Edgar</name>
+<surname>Davids</surname>
+<password>juve</password>
+</mentor></mentors>
     <students>
         <student login="ja">
             <name>Stanisław</name>
             <surname>Wyrobek</surname>
             <password>heheheh</password>
         </student>
-    </students>
+        </students>
     <employees>
         <employee login="pracownik">
             <name>Jan</name>
