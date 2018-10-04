@@ -42,7 +42,7 @@ public class StudentDAO implements StudentDAOinter {
         return new File(filePath);
     }
 
-    private enum AssignmentParameters {
+    public enum AssignmentParameters {
         GIT_HUB_LINK("linkToRepository"),
         NOTE("note");
 
