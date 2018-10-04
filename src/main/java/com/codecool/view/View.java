@@ -32,6 +32,7 @@ public class View {
         int num = 1;
         for (User user : listOfUsers) {
             System.out.println("(" + num + ") " + user.getNameOfUser() + " " + user.getSurnameOfUser());
+            System.out.println("Login: " + user.getLogin());
             num ++;
         }
     }
@@ -104,6 +105,16 @@ public class View {
         System.out.println("Welcome" + user + "!");
     }
 
+
+    public String getStringInputFromUser(String message) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println(message);
+        return scan.nextLine();
+    }
+
+    public void printMessage(String message) {
+        System.out.println(message);
+    }
     public void askMentorToSetTitle(){
         System.out.println("Set assigment title: ");
     }
