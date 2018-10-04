@@ -39,7 +39,12 @@ public class StudentController {
             int userMenuOption = view.getUserMenuOption();
 
             if (userMenuOption == submitAssignmentOption) {
-                submitAssignment(view.getStringInput(), view.getStringInput());
+                view.printGradedAssigmentForStudent(getDataAssignmentList());
+                view.printGetTitle();
+                String assignmentTitle = view.getStringInput();
+                view.printGetLink();
+                String assignmentLink = view.getStringInput();
+                submitAssignment(assignmentTitle, assignmentLink);
             } else if (userMenuOption == viewGradesOption) {
                 view.printGradedAssigmentForStudent(getDataAssignmentList());
             } else if (userMenuOption == logOutOption) {
@@ -50,12 +55,10 @@ public class StudentController {
         }
     }
 
-
-    public void submitAssignment(String assignmentTittle, String assignmentLink) {
-            // Student should not make new assignments - student should operate on assignment from dataAssignmentList!!!
+    public void submitAssignment(String assignmentTitle, String assignmentLink) {
 
         for(Assignment assignment: assignmentList){
-            if(assignment.getAssignmentTittle().equals(assignmentTittle)){
+            if(assignment.getAssignmentTittle().equals(assignmentTitle)){
                 assignment.setAssignmentLink(assignmentLink);
                 studentDAO.updateAssignment(StudentDAO.AssignmentParameters.GIT_HUB_LINK, student.getLogin(), assignmentLink);
             }

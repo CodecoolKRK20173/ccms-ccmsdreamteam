@@ -116,8 +116,13 @@ public class View {
         System.out.println(message);
     }
     public void askMentorToSetTitle(){
-        System.out.println("Set assigment title: ");
+        System.out.println("Set assignment title: ");
     }
-
+    public void printGetTitle() {
+        System.out.print("Input title of an assignment: ");
+    }
+    public void printGetLink() {
+        System.out.print("Submit assignment link: ");
+    }
 
 }
