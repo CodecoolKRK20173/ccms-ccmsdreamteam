@@ -1,4 +1,3 @@
-
 package com.codecool.dao;
 
 import com.codecool.model.Assignment;

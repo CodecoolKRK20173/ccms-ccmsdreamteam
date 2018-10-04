@@ -94,8 +94,6 @@ public class MentorDAO implements MentorDAOinter {
                                      String note) {
         assignmentList.add(new Assignment(assignmentName, linkToRepository, status, note));
     }
-
-// Dodaj serializacje Asigmentu
-    // dodaj deserializacje Asigmentu
+    
 
 }

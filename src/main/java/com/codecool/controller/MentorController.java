@@ -75,7 +75,6 @@ public class MentorController {
         Gradeable newAssigment = new Assignment(assigmentTitle, assigmentLink, status, note);
 
 
-
     }
 
     public boolean gradeAssigment(boolean isPositiveGrade){
