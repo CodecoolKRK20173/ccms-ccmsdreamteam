@@ -1,18 +1,13 @@
 package com.codecool.controller;
 
-import com.codecool.controller.BossController;
-import com.codecool.controller.MentorController;
-import com.codecool.controller.RegularEmployeeControler;
-import com.codecool.controller.StudentController;
-import com.codecool.dao.BossDAO;
 import com.codecool.model.*;
 import com.codecool.view.View;
-
-import java.util.Scanner;
 
 public class MainController {
     private LoginController loginController;
     private View view;
+    private final String[] mainMenu = {"Log in",
+                                          "Exit"};
 
     public MainController() {
         loginController = new LoginController();
@@ -25,7 +20,9 @@ public class MainController {
         boolean exit = false;
 
         while (!exit) {
-            view.printMainMenu();
+            view.printHeader();
+            view.printMenuForUser(mainMenu);
+            view.printGetOption();
             int userMenuOption = view.getUserMenuOption();
             if (userMenuOption == logInOption) {
                 manageUserSession();
@@ -35,17 +32,6 @@ public class MainController {
                 view.printErrorInputMessage();
             }
         }
-
-//        BossDAO dao = new BossDAO();
-//        View view = new View();
-//        view.printListOfUsers(dao.getUsersListByType("mentor"));
-//
-////        dao.removeUserFromDataBase("mentor1", "mentor");
-//
-////        dao.addUserToDataBase(new Mentor("test", "Staszek", "Wyrobek", "wow"), "mentors");
-//
-//        String userToEdit = view.getStringInputFromUser("Enter a login user's to edit: ");
-//        dao.editUser(userToEdit, "mentor");
     }
     private void manageUserSession() {
         String login = validateUserPassword();
@@ -69,7 +55,6 @@ public class MainController {
     }
     private void createUserSession(String login) {
         User user = loginController.getUser(login);
-        System.out.println("tworzy");
 
         if (user instanceof Boss) {
             new BossController(user).manageBoss();

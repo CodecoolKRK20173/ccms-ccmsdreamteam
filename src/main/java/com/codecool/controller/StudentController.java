@@ -34,6 +34,7 @@ public class StudentController {
         view.printWelcomeUser(student.toString());
         while (!exit) {
             view.printMenuForUser(studentMenu);
+            view.printGetOption();
             int userMenuOption = view.getUserMenuOption();
 
             if (userMenuOption == submitAssignmentOption) {

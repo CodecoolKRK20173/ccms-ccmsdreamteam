@@ -9,11 +9,6 @@ import java.util.Scanner;
 
 public class View {
 
-    public void printMainMenu() {
-        printHeader();
-        System.out.println("1.Log In\n2.Exit");
-        printGetOption();
-    }
     public void printInputLogin() {
         System.out.print("Input user login: ");
     }
@@ -29,31 +24,32 @@ public class View {
         }
     }
     public void printListOfUsers(List<User> listOfUsers) {
+        printSeparateLine();
         int num = 1;
         for (User user : listOfUsers) {
             System.out.println("(" + num + ") " + user.getNameOfUser() + " " + user.getSurnameOfUser());
             System.out.println("Login: " + user.getLogin());
             num ++;
         }
+        printSeparateLine();
     }
 
     public void printGradedAssigmentForStudent(List<String> dataAssignmentList) {
-        int num = 1;
         for (int i = 0; i < dataAssignmentList.size(); i += 4) {
             String tittle = dataAssignmentList.get(i);
             String link = dataAssignmentList.get(i + 1);
             String status = dataAssignmentList.get(i + 2);
             String grade = dataAssignmentList.get(i + 3);
-            System.out.println("Tittle: " + tittle + "| Link: " + link + "| Status: " + status + "| Grade: " + grade);
+            System.out.println("Title: " + tittle + "| Link: " + link + "| Status: " + status + "| Grade: " + grade);
 
         }
 
     }
 
-    private void printHeader() {
+    public void printHeader() {
         System.out.println("CcMS - Codecool Management System");
     }
-    private void printGetOption() {
+    public void printGetOption() {
         System.out.print("Choose option: ");
     }
     public int getUserMenuOption() {
@@ -93,6 +89,10 @@ public class View {
         }
         return stringInput;
     }
+    public String getStringInput(String message ) {
+        System.out.print(message);
+        return getStringInput();
+    }
     public String getUserPassword() {
         return getUserLogin();
     }
@@ -102,14 +102,9 @@ public class View {
     }
 
     public void printWelcomeUser(String user) {
+        printSeparateLine();
         System.out.println("Welcome" + user + "!");
-    }
-
-
-    public String getStringInputFromUser(String message) {
-        Scanner scan = new Scanner(System.in);
-        System.out.println(message);
-        return scan.nextLine();
+        printSeparateLine();
     }
 
     public void printMessage(String message) {
@@ -123,6 +118,10 @@ public class View {
     }
     public void printGetLink() {
         System.out.print("Submit assignment link: ");
+    }
+
+    public void printSeparateLine() {
+        System.out.println("-------------------------------------------------------------------------");
     }
 
 }

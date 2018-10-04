@@ -37,16 +37,17 @@ public class BossController {
         view.printWelcomeUser(boss.toString());
         while (!exit) {
             view.printMenuForUser(this.bossMenu);
+            view.printGetOption();
             int userMenuOption = view.getUserMenuOption();
 
             if (userMenuOption == addMentorOption) {
                 User user = createUserObject("mentor");
-                bossDAO.addUserToDataBase(user, "mentors");
+                bossDAO.addMentorToDataBase(user);
             } else if (userMenuOption == removeMentorOption) {
-                String userToRemove = view.getStringInputFromUser("Enter  mentor's login to remove: ");
-                bossDAO.removeUserFromDataBase(userToRemove, "mentor");
+                String userToRemove = view.getStringInput("Enter  mentor's login to remove: ");
+                bossDAO.removeMentorFromDataBase(userToRemove);
             } else if (userMenuOption == editMentorOption) {
-                String userToEdit = view.getStringInputFromUser("Enter  mentor's login to edit: ");
+                String userToEdit = view.getStringInput("Enter  mentor's login to edit: ");
                 bossDAO.editUser(userToEdit, "mentor");
             } else if (userMenuOption == listMentorsOption) {
                 view.printListOfUsers(bossDAO.getUsersListByType("mentor"));
@@ -62,10 +63,10 @@ public class BossController {
 
     private User createUserObject(String kindOfUser) {
         View view = new View();
-        String login = view.getStringInputFromUser("Enter a login of user");
-        String name = view.getStringInputFromUser("Enter a name of user");
-        String surname = view.getStringInputFromUser("Enter a surname of user");
-        String password = view.getStringInputFromUser("Enter a password of user");
+        String login = view.getStringInput("Enter a login of user: ");
+        String name = view.getStringInput("Enter a name of user: ");
+        String surname = view.getStringInput("Enter a surname of user: ");
+        String password = view.getStringInput("Enter a password of user: ");
 
         if (kindOfUser.equals("mentor")) {
            return new Mentor(login, name, surname, password);
@@ -74,8 +75,6 @@ public class BossController {
             return new Student(login, name, surname, password);
         }
     }
-
-
 
 }
 

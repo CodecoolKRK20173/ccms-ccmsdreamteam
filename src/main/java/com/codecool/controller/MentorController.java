@@ -1,12 +1,14 @@
 package com.codecool.controller;
 
 import com.codecool.dao.MentorDAO;
-import com.codecool.dao.MentorDAOinter;
 import com.codecool.dao.StudentDAO;
 import com.codecool.model.Assignment;
 import com.codecool.model.Gradeable;
 import com.codecool.model.User;
 import com.codecool.view.View;
+import com.codecool.model.Mentor;
+import com.codecool.model.Student;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,6 @@ public class MentorController {
                                          "Log out"};
 
     public MentorController(User mentorUser) {
-        this.mentorDAO = new MentorDAO();
         this.mentor = mentorUser;
         this.mentorDAO = new MentorDAO();
         this.view = new View();
@@ -50,24 +51,26 @@ public class MentorController {
         view.printWelcomeUser(mentor.toString());
         while (!exit) {
             view.printMenuForUser(this.mentorMenu);
+            view.printGetOption();
             int userMenuOption = view.getUserMenuOption();
 
             if (userMenuOption == listStudentsOption) {
-                // TODO
+                view.printListOfUsers(mentorDAO.getUsersListByType("student"));
             } else if (userMenuOption == addAssignmentOption) {
                 // TODO
             } else if (userMenuOption == gradeAssignmentOption) {
                 gradeAssigment(view.getStringInput(), view.getStringInput(), view.getStringInput());
-                // TODO
             } else if (userMenuOption == viewStudentsAssigmentOption) {
                 view.printGradedAssigmentForStudent(viewStudentAssigments(view.getStringInput()));
-                // TODO
             } else if (userMenuOption == addStudentOption) {
-                // TODO
+                User user = createUserObject("student");
+                mentorDAO.addUserToDataBase(user, "students");
             } else if (userMenuOption == removeStudentOption) {
-                // TODO
+                String userToRemove = view.getStringInput("Enter  students's login to remove: ");
+                mentorDAO.removeStudentFromDataBase(userToRemove);
             } else if (userMenuOption == editStudentsOption) {
-                // TODO
+                String userToEdit = view.getStringInput("Enter  student's login to edit: ");
+                mentorDAO.editUser(userToEdit, "student");
             } else if (userMenuOption == logOutOption) {
                 exit = true;
             } else {
@@ -78,8 +81,6 @@ public class MentorController {
 
     public List viewStudentAssigments(String login){
         this.assignmentList = studentDao.loadAssignments(login);
-        System.out.println(assignmentList.get(0).getIsGraded());
-        System.out.println(assignmentList.get(0).getGrade());
 
         List<String> dataAssignmentList = new ArrayList<>();
 
@@ -101,23 +102,18 @@ public class MentorController {
         }
 
         return dataAssignmentList;
-
-
     }
 
-//    public void addAssigmen(){
-//        view.askMentorToSetTitle();
-//        String assigmentTitle = view.getStringInput();
-//        String assigmentLink = "";
-//        String status = "Waiting for submission";
-//        String note = "0";
-//        Gradeable newAssigment = new Assignment(assigmentTitle, assigmentLink, status, note);
-//
-//
-//    }
+    public void addAssigmen(){
+        view.askMentorToSetTitle();
+        String assigmentTitle = view.getStringInput();
+        String assigmentLink = "";
+        String status = "Waiting for submission";
+        String note = "0";
+        Gradeable newAssigment = new Assignment(assigmentTitle, assigmentLink, status, note);
+    }
 
     public void gradeAssigment(String login, String assignmentTittle, String grade){
-
         boolean isPased = false;
 
         this.assignmentList = studentDao.loadAssignments(login);
@@ -127,7 +123,6 @@ public class MentorController {
 
         for(Assignment assignment: assignmentList){
             if(assignment.getAssignmentTittle().equals(assignmentTittle)){
-                System.out.println("duupa");
                 assignment.setIsGraded(true);
                 assignment.setGrade(isPased);
                 studentDao.updateAssignment(StudentDAO.AssignmentParameters.NOTE, login, grade);
@@ -147,5 +142,22 @@ public class MentorController {
 
     }
 
+    public void checkAttendance(){
 
+    }
+
+    private User createUserObject(String kindOfUser) {
+        View view = new View();
+        String login = view.getStringInput("Enter a login of user");
+        String name = view.getStringInput("Enter a name of user");
+        String surname = view.getStringInput("Enter a surname of user");
+        String password = view.getStringInput("Enter a password of user");
+
+        if (kindOfUser.equals("mentor")) {
+            return new Mentor(login, name, surname, password);
+        }
+        else  {
+            return new Student(login, name, surname, password);
+        }
+    }
 }

@@ -2,6 +2,8 @@ package com.codecool.dao;
 
 import com.codecool.model.Assignment;
 import com.codecool.model.Student;
+import com.codecool.model.User;
+import com.codecool.view.View;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -16,7 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MentorDAO implements UsersDAOinter {
+public class MentorDAO extends UsersDAO {
 
     private Document userData;
 
@@ -95,5 +97,20 @@ public class MentorDAO implements UsersDAOinter {
         assignmentList.add(new Assignment(assignmentName, linkToRepository, status, note));
     }
 
+    public void removeStudentFromDataBase(String login) {
+        String type = "students";
+        View view = new View();
+        view.printListOfUsers(super.getUsersListByType(type));
+        super.removeUserFromDataBase(login, type);
+
+    }
+
+    public void addStudentToDataBase(User user) {
+        String type ="students";
+        super.addUserToDataBase(user, type);
+    }
+
+// Dodaj serializacje Asigmentu
+    // dodaj deserializacje Asigmentu
 
 }

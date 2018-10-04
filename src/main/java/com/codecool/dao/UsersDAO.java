@@ -22,9 +22,9 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.OutputKeys;
 
 
-public interface UsersDAOinter {
+public abstract class UsersDAO {
 
-    default List<User> getUsersListByType(String typeOfUser) {
+    public List<User> getUsersListByType(String typeOfUser) {
 
         List<User> mentorsList = new ArrayList<User>();
 
@@ -64,7 +64,7 @@ public interface UsersDAOinter {
     }
 
 
-    default Element prepareRootElement() {
+    private Element prepareRootElement() {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = null;
         try {
@@ -85,7 +85,7 @@ public interface UsersDAOinter {
     }
 
 
-    default void addUserToDataBase(User userToAdd, String typeOfUser) {
+    public void addUserToDataBase(User userToAdd, String typeOfUser) {
 
         View view = new View();
 
@@ -149,7 +149,7 @@ public interface UsersDAOinter {
         else view.printMessage("This login is occupied!");
     }
 
-    default Document createDocumentElement() {
+    private Document createDocumentElement() {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = null;
         try {
@@ -169,9 +169,9 @@ public interface UsersDAOinter {
     }
 
 
-    default void removeUserFromDataBase(String login, String type) {
+    public void removeUserFromDataBase(String login, String type) {
         View view = new View();
-        view.printListOfUsers(getUsersListByType(type));
+//        view.printListOfUsers(getUsersListByType(type));
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         Document document = null;
         try {
@@ -232,17 +232,17 @@ public interface UsersDAOinter {
     }
 
 
-    default void editUser(String loginUserToEdit, String type) {
+    public void editUser(String loginUserToEdit, String type) {
         View view = new View();
 
         if (checkIfLoginExist(loginUserToEdit)) {
 
             removeUserFromDataBase(loginUserToEdit, type);
 
-            String login = view.getStringInputFromUser("Edit user's login");
-            String name = view.getStringInputFromUser("Edit user's name");
-            String surname = view.getStringInputFromUser("Edit user's surname");
-            String password = view.getStringInputFromUser("Edit user's password");
+            String login = view.getStringInput("Edit user's login: ");
+            String name = view.getStringInput("Edit user's name: ");
+            String surname = view.getStringInput("Edit user's surname: ");
+            String password = view.getStringInput("Edit user's password: ");
             if (type.equals("mentor")) {
                 type = type + "s";
                 addUserToDataBase(new Mentor(login, name, surname, password), type);
@@ -254,7 +254,7 @@ public interface UsersDAOinter {
     }
 
 
-    default boolean checkIfLoginExist(String login) {
+    private boolean checkIfLoginExist(String login) {
 
         Document document = createDocumentElement();
         Element root = document.getDocumentElement();
@@ -264,7 +264,7 @@ public interface UsersDAOinter {
 
             Node node = nodelist.item(i);
 
-            System.out.println(node.getNodeName());
+
 
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element nodeElement = (Element) node;
@@ -289,6 +289,5 @@ public interface UsersDAOinter {
         }
         return false;
     }
-
 
 }
