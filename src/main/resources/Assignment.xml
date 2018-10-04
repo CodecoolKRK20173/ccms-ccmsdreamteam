@@ -3,7 +3,7 @@
     <student login="ja">
         <assignments>
             <assignment name="assignment1" status="Waiting for submission">
-                <linkToRepository>www.github.com/repo1</linkToRepository>
+                <linkToRepository>d</linkToRepository>
                 <note>0</note>
             </assignment>
         </assignments>

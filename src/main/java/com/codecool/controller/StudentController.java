@@ -2,14 +2,17 @@ package com.codecool.controller;
 
 import com.codecool.dao.StudentDAO;
 import com.codecool.model.Assignment;
+import com.codecool.model.Student;
 import com.codecool.model.User;
 import com.codecool.view.View;
+import sun.nio.ch.sctp.AssociationImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentController {
 
+    private  List<Assignment> assignmentList;
     private StudentDAO studentDAO;
     private User student;
     private View view;
@@ -21,6 +24,7 @@ public class StudentController {
         this.student = studentUser;
         this.studentDAO = new StudentDAO();
         this.view = new View();
+        this.assignmentList = studentDAO.loadAssignments(student.getLogin());
     }
 
     public void manageStudent() {
@@ -29,15 +33,25 @@ public class StudentController {
         int logOutOption = 3;
         boolean exit = false;
 
+        for (Assignment ass : assignmentList) {
+            System.out.println(ass.getAssignmentLink());
+            System.out.println(ass.getStatus());
+        }
+        studentDAO.updateAssignment(StudentDAO.AssignmentParameters.GIT_HUB_LINK, student.getLogin(), "a");
+        for (Assignment ass : assignmentList) {
+            System.out.println(ass.getAssignmentLink());
+            System.out.println(ass.getStatus());
+        }
+
         view.printWelcomeUser(student.toString());
         while (!exit) {
             view.printMenuForUser(studentMenu);
             int userMenuOption = view.getUserMenuOption();
 
             if (userMenuOption == submitAssignmentOption) {
-                // TODO
+                submitAssignment(view.getStringInput(), view.getStringInput());
             } else if (userMenuOption == viewGradesOption) {
-                // TODO
+                view.printGradedAssigmentForStudent(getDataAssignmentList());
             } else if (userMenuOption == logOutOption) {
                 exit = true;
             } else {
@@ -46,15 +60,21 @@ public class StudentController {
         }
     }
 
-    List<Assignment> assignmentList = new ArrayList<>();
 
     public void submitAssignment(String assignmentTittle, String assignmentLink) {
-        Assignment assignment = new Assignment(assignmentTittle, assignmentLink, "status", "note");     // Student should not make new assignments - student should operate on assignment from dataAssignmentList!!!
-        assignmentList.add(assignment);
+            // Student should not make new assignments - student should operate on assignment from dataAssignmentList!!!
+
+        for(Assignment assignment: assignmentList){
+            if(assignment.getAssignmentTittle().equals(assignmentTittle)){
+                assignment.setAssignmentLink(assignmentLink);
+                studentDAO.updateAssignment(StudentDAO.AssignmentParameters.GIT_HUB_LINK, student.getLogin(), assignmentLink);
+            }
+        }
     }
 
     public List getDataAssignmentList() {
         List<String> dataAssignmentList = new ArrayList<>();
+        System.out.println(dataAssignmentList);
         for (Assignment assignment : assignmentList) {
             dataAssignmentList.add(assignment.getAssignmentTittle());
             dataAssignmentList.add(assignment.getAssignmentLink());

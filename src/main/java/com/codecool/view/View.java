@@ -38,12 +38,13 @@ public class View {
 
     public void printGradedAssigmentForStudent(List<String> dataAssignmentList) {
         int num = 1;
+        System.out.println(dataAssignmentList);
         for (int i = 0; i < dataAssignmentList.size(); i += 4) {
             String tittle = dataAssignmentList.get(i);
             String link = dataAssignmentList.get(i + 1);
             String status = dataAssignmentList.get(i + 2);
             String grade = dataAssignmentList.get(i + 3);
-            System.out.println("Tittle: " + tittle + " Link: " + link + " Status: " + status + " Grade: " + grade);
+            System.out.println("Tittle: " + tittle + "| Link: " + link + "| Status: " + status + "| Grade: " + grade);
 
         }
 

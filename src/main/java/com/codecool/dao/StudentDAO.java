@@ -43,13 +43,13 @@ public class StudentDAO implements StudentDAOinter {
         return new File(filePath);
     }
 
-    private enum AssignmentParameters {
+    public enum AssignmentParameters {
         GIT_HUB_LINK("linkToRepository"),
         NOTE("note");
 
         private String parameter;
 
-        private AssignmentParameters(String parameter) {
+        AssignmentParameters(String parameter) {
             this.parameter = parameter;
         }
 
@@ -65,20 +65,10 @@ public class StudentDAO implements StudentDAOinter {
         if (student !=null) {
             NodeList studentAssignments = student.getElementsByTagName("assignment");
             for (int i=0; i<studentAssignments.getLength(); i++) {
-                Node studentNode = studentAssignments.item(i);
-                String newStatus = "";
-                if (studentNode.getNodeType() == Node.ELEMENT_NODE) {
-                    Element studentElement = (Element) studentNode;
-                    switch(assignmentParameter) {
-                        case NOTE:
-                            newStatus = "Noted";
-                            break;
-                        case GIT_HUB_LINK:
-                            newStatus = "Waiting for revision";
-                            break;
-                    }
-                    studentElement.getElementsByTagName(assignmentParameterString).item(0).setTextContent(newEntry);
-                    studentElement.setAttribute("status", newStatus);
+                Node assignmentNode = studentAssignments.item(i);
+                if (assignmentNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element assignmentElement = (Element) assignmentNode;
+                    assignmentElement.getElementsByTagName("linkToRepository").item(0).setTextContent(newEntry);
                 }
             }
         }
