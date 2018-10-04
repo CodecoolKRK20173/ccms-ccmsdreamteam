@@ -91,7 +91,7 @@ public class LoginDAO implements LoginDAOinter {
                     Element userElement = (Element) userNode;
                     currentLogin = userElement.getAttribute("login");
                     if (currentLogin.equals(login)) {
-                        type = userElement.getAttribute("login");
+                        type = userElement.getTagName();
                         name = userElement.getElementsByTagName("name").item(0).getTextContent();
                         surname = userElement.getElementsByTagName("surname").item(0).getTextContent();
                         password = userElement.getElementsByTagName("password").item(0).getTextContent();
