@@ -23,7 +23,7 @@ public class LoginController {
         String userName = userParameters.get(2);
         String userSurname = userParameters.get(3);
         String userPassword = userParameters.get(4);
-        User user = new Student(userLogin, userName, userSurname, userPassword);    // Should not be initialized, but must be initialized:(
+        User user = null;
 
         if (userType.equals("boss")) {
             user = new Boss(userLogin, userName, userSurname, userPassword);
