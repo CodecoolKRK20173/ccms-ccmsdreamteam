@@ -264,8 +264,6 @@ public interface UsersDAOinter {
 
             Node node = nodelist.item(i);
 
-            System.out.println(node.getNodeName());
-
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element nodeElement = (Element) node;
 
@@ -289,6 +287,5 @@ public interface UsersDAOinter {
         }
         return false;
     }
-
 
 }
