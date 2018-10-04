@@ -24,7 +24,7 @@ public class StudentDAO implements StudentDAOinter {
 
     private void parseXMLToDocument() {
         try {
-            File userDataXML = openFile("/src/main/resources/Assigment.xml");
+            File userDataXML = openFile("src/main/resources/Assignment.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = dbFactory.newDocumentBuilder();
             userData = documentBuilder.parse(userDataXML);
