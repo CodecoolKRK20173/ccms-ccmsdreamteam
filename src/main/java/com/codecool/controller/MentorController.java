@@ -78,6 +78,8 @@ public class MentorController {
 
     public List viewStudentAssigments(String login){
         this.assignmentList = studentDao.loadAssignments(login);
+        System.out.println(assignmentList.get(0).getIsGraded());
+        System.out.println(assignmentList.get(0).getGrade());
 
         List<String> dataAssignmentList = new ArrayList<>();
 
@@ -103,16 +105,16 @@ public class MentorController {
 
     }
 
-    public void addAssigmen(){
-        view.askMentorToSetTitle();
-        String assigmentTitle = view.getStringInput();
-        String assigmentLink = "";
-        String status = "Waiting for submission";
-        String note = "0";
-        Gradeable newAssigment = new Assignment(assigmentTitle, assigmentLink, status, note);
-
-
-    }
+//    public void addAssigmen(){
+//        view.askMentorToSetTitle();
+//        String assigmentTitle = view.getStringInput();
+//        String assigmentLink = "";
+//        String status = "Waiting for submission";
+//        String note = "0";
+//        Gradeable newAssigment = new Assignment(assigmentTitle, assigmentLink, status, note);
+//
+//
+//    }
 
     public void gradeAssigment(String login, String assignmentTittle, String grade){
 
@@ -125,6 +127,7 @@ public class MentorController {
 
         for(Assignment assignment: assignmentList){
             if(assignment.getAssignmentTittle().equals(assignmentTittle)){
+                System.out.println("duupa");
                 assignment.setIsGraded(true);
                 assignment.setGrade(isPased);
                 studentDao.updateAssignment(StudentDAO.AssignmentParameters.NOTE, login, grade);

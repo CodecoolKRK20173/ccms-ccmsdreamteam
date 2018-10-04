@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?><students>
     <student login="ja">
         <assignments>
-            <assignment name="assignment1" status="Waiting for revision">
-                <linkToRepository>github.com/jakisprojekt</linkToRepository>
-                <note>0</note>
+            <assignment name="assignment1" status="Noted">
+                <linkToRepository>gitmygit.com</linkToRepository>
+                <note>Passed</note>
             </assignment>
         </assignments>
     </student>

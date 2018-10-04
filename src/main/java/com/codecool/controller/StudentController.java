@@ -68,7 +68,9 @@ public class StudentController {
         for (Assignment assignment : assignmentList) {
             dataAssignmentList.add(assignment.getAssignmentTittle());
             dataAssignmentList.add(assignment.getAssignmentLink());
+            System.out.println(assignment.getIsGraded());
             if (assignment.getIsGraded()) {
+                System.out.println("jest oceniony");
                 dataAssignmentList.add("Graded");
                 if (assignment.getGrade()) {
                     dataAssignmentList.add("Passed");
