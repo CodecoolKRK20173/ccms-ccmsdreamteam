@@ -14,7 +14,7 @@ import javax.xml.parsers.*;
 
 public interface BossDAOinter {
 
-    public List<User> getMentorsList();
+    List<User> getUsersListByType(String typeOfUser);
 
 
 }
