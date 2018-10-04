@@ -1,6 +1,7 @@
 package com.codecool.controller;
 
 import com.codecool.dao.MentorDAO;
+import com.codecool.dao.MentorDAOinter;
 import com.codecool.model.Assignment;
 import com.codecool.model.Gradeable;
 import com.codecool.model.User;
@@ -8,7 +9,7 @@ import com.codecool.view.View;
 
 public class MentorController {
 
-    private MentorDAO mentorDAO;
+    private MentorDAOinter mentorDAO;
     private User mentor;
     private View view;
     private final String[] mentorMenu = {"List students",
@@ -21,6 +22,7 @@ public class MentorController {
                                          "Log out"};
 
     public MentorController(User mentorUser) {
+        this.mentorDAO = new MentorDAO();
         this.mentor = mentorUser;
         this.mentorDAO = new MentorDAO();
         this.view = new View();
