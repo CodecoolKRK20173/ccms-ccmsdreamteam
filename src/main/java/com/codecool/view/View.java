@@ -9,11 +9,6 @@ import java.util.Scanner;
 
 public class View {
 
-    public void printMainMenu() {
-        printHeader();
-        System.out.println("1.Log In\n2.Exit");
-        printGetOption();
-    }
     public void printInputLogin() {
         System.out.print("Input user login: ");
     }
@@ -38,22 +33,21 @@ public class View {
     }
 
     public void printGradedAssigmentForStudent(List<String> dataAssignmentList) {
-        int num = 1;
         for (int i = 0; i < dataAssignmentList.size(); i += 4) {
             String tittle = dataAssignmentList.get(i);
             String link = dataAssignmentList.get(i + 1);
             String status = dataAssignmentList.get(i + 2);
             String grade = dataAssignmentList.get(i + 3);
-            System.out.println("Tittle: " + tittle + "| Link: " + link + "| Status: " + status + "| Grade: " + grade);
+            System.out.println("Title: " + tittle + "| Link: " + link + "| Status: " + status + "| Grade: " + grade);
 
         }
 
     }
 
-    private void printHeader() {
+    public void printHeader() {
         System.out.println("CcMS - Codecool Management System");
     }
-    private void printGetOption() {
+    public void printGetOption() {
         System.out.print("Choose option: ");
     }
     public int getUserMenuOption() {

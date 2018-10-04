@@ -29,6 +29,7 @@ public class RegularEmployeeControler {
         view.printWelcomeUser(regularEmployee.toString());
         while (!exit) {
             view.printMenuForUser(this.regularEmployeeMenu);
+            view.printGetOption();
             int userMenuOption = view.getUserMenuOption();
             if (userMenuOption == seeListOfStudents) {
                 listOfStudents = regularEmployeeDAO.getListOfStudent();

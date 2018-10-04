@@ -28,7 +28,6 @@ public class MentorController {
                                          "Log out"};
 
     public MentorController(User mentorUser) {
-        this.mentorDAO = new MentorDAO();
         this.mentor = mentorUser;
         this.mentorDAO = new MentorDAO();
         this.view = new View();
@@ -50,6 +49,7 @@ public class MentorController {
         view.printWelcomeUser(mentor.toString());
         while (!exit) {
             view.printMenuForUser(this.mentorMenu);
+            view.printGetOption();
             int userMenuOption = view.getUserMenuOption();
 
             if (userMenuOption == listStudentsOption) {

@@ -37,6 +37,7 @@ public class BossController {
         view.printWelcomeUser(boss.toString());
         while (!exit) {
             view.printMenuForUser(this.bossMenu);
+            view.printGetOption();
             int userMenuOption = view.getUserMenuOption();
 
             if (userMenuOption == addMentorOption) {
