@@ -87,6 +87,10 @@ public class View {
         }
         return stringInput;
     }
+    public String getStringInput(String message ) {
+        System.out.print(message);
+        return getStringInput();
+    }
     public String getUserPassword() {
         return getUserLogin();
     }
@@ -97,13 +101,6 @@ public class View {
 
     public void printWelcomeUser(String user) {
         System.out.println("Welcome" + user + "!");
-    }
-
-
-    public String getStringInputFromUser(String message) {
-        Scanner scan = new Scanner(System.in);
-        System.out.println(message);
-        return scan.nextLine();
     }
 
     public void printMessage(String message) {

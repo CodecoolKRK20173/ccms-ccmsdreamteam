@@ -239,10 +239,10 @@ public interface UsersDAOinter {
 
             removeUserFromDataBase(loginUserToEdit, type);
 
-            String login = view.getStringInputFromUser("Edit user's login");
-            String name = view.getStringInputFromUser("Edit user's name");
-            String surname = view.getStringInputFromUser("Edit user's surname");
-            String password = view.getStringInputFromUser("Edit user's password");
+            String login = view.getStringInput("Edit user's login: ");
+            String name = view.getStringInput("Edit user's name: ");
+            String surname = view.getStringInput("Edit user's surname: ");
+            String password = view.getStringInput("Edit user's password: ");
             if (type.equals("mentor")) {
                 type = type + "s";
                 addUserToDataBase(new Mentor(login, name, surname, password), type);

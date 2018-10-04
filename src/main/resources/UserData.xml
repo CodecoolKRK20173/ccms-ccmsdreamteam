@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<users>
+<?xml version="1.0" encoding="utf-8" standalone="no"?><users>
     <mentors>
         <mentor login="test">
             <name>Edgar</name>
@@ -15,6 +14,12 @@
 <name>Franciszek</name>
 <surname>Benedict</surname>
 <password>zbychu</password>
+</mentor>
+
+<mentor login="mentor123">
+<name>Jacek</name>
+<surname>Marecki</surname>
+<password>jmarecki</password>
 </mentor>
 </mentors>
     <students>
