@@ -1,7 +1,6 @@
 package com.codecool.controller;
 
 import com.codecool.dao.MentorDAO;
-import com.codecool.dao.MentorDAOinter;
 import com.codecool.dao.StudentDAO;
 import com.codecool.model.Assignment;
 import com.codecool.model.Gradeable;
@@ -58,10 +57,8 @@ public class MentorController {
                 // TODO
             } else if (userMenuOption == gradeAssignmentOption) {
                 gradeAssigment(view.getStringInput(), view.getStringInput(), view.getStringInput());
-                // TODO
             } else if (userMenuOption == viewStudentsAssigmentOption) {
                 view.printGradedAssigmentForStudent(viewStudentAssigments(view.getStringInput()));
-                // TODO
             } else if (userMenuOption == addStudentOption) {
                 // TODO
             } else if (userMenuOption == removeStudentOption) {
@@ -99,8 +96,6 @@ public class MentorController {
         }
 
         return dataAssignmentList;
-
-
     }
 
     public void addAssigmen(){
@@ -110,12 +105,9 @@ public class MentorController {
         String status = "Waiting for submission";
         String note = "0";
         Gradeable newAssigment = new Assignment(assigmentTitle, assigmentLink, status, note);
-
-
     }
 
     public void gradeAssigment(String login, String assignmentTittle, String grade){
-
         boolean isPased = false;
 
         this.assignmentList = studentDao.loadAssignments(login);
@@ -143,6 +135,4 @@ public class MentorController {
     public void editStudent(){
 
     }
-
-
 }
