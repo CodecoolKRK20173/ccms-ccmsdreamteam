@@ -10,6 +10,12 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,6 +27,23 @@ public class StudentDAO implements StudentDAOinter {
 
     public StudentDAO() {
         parseXMLToDocument();
+    }
+
+    private void saveToXMLDocument() {
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = null;
+        try {
+            transformer = transformerFactory.newTransformer();
+        } catch (TransformerConfigurationException e) {
+            e.printStackTrace();
+        }
+        DOMSource source = new DOMSource(userData);
+        StreamResult result = new StreamResult(openFile("src/main/resources/Assignment.xml"));
+        try {
+            transformer.transform(source, result);
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        }
     }
 
     private void parseXMLToDocument() {
@@ -76,6 +99,7 @@ public class StudentDAO implements StudentDAOinter {
                     Element studentElement = (Element) studentNode;
                     studentElement.getElementsByTagName(assignmentParameterString).item(0).setTextContent(newEntry);
                     studentElement.setAttribute("status", assignmentParameter.getStatus());
+                    saveToXMLDocument();
                 }
             }
         }

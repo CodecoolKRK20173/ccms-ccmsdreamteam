@@ -33,16 +33,6 @@ public class StudentController {
         int logOutOption = 3;
         boolean exit = false;
 
-        for (Assignment ass : assignmentList) {
-            System.out.println(ass.getAssignmentLink());
-            System.out.println(ass.getStatus());
-        }
-        studentDAO.updateAssignment(StudentDAO.AssignmentParameters.GIT_HUB_LINK, student.getLogin(), "a");
-        for (Assignment ass : assignmentList) {
-            System.out.println(ass.getAssignmentLink());
-            System.out.println(ass.getStatus());
-        }
-
         view.printWelcomeUser(student.toString());
         while (!exit) {
             view.printMenuForUser(studentMenu);
@@ -74,7 +64,6 @@ public class StudentController {
 
     public List getDataAssignmentList() {
         List<String> dataAssignmentList = new ArrayList<>();
-        System.out.println(dataAssignmentList);
         for (Assignment assignment : assignmentList) {
             dataAssignmentList.add(assignment.getAssignmentTittle());
             dataAssignmentList.add(assignment.getAssignmentLink());

@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<students>
+<?xml version="1.0" encoding="utf-8" standalone="no"?><students>
     <student login="ja">
         <assignments>
-            <assignment name="assignment1" status="Waiting for submission">
-                <linkToRepository>d</linkToRepository>
+            <assignment name="assignment1" status="Waiting for revision">
+                <linkToRepository>dupa</linkToRepository>
                 <note>0</note>
             </assignment>
         </assignments>
