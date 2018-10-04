@@ -19,7 +19,7 @@ public class StudentDAO implements StudentDAOinter {
 
     private Document userData;
 
-    StudentDAO() {
+    public StudentDAO() {
         parseXMLToDocument();
     }
 
