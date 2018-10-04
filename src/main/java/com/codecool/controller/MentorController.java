@@ -13,7 +13,7 @@ import java.util.List;
 
 public class MentorController {
 
-    private MentorDAOinter mentorDAO;
+    private MentorDAO mentorDAO;
     private StudentDAO studentDao;
     private List<Assignment> assignmentList;
     private User mentor;

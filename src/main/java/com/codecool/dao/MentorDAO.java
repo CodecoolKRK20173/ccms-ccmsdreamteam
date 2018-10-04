@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MentorDAO implements MentorDAOinter {
+public class MentorDAO implements UsersDAOinter {
 
     private Document userData;
 

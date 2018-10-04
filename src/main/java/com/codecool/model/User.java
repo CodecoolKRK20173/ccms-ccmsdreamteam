@@ -30,6 +30,8 @@ public abstract class User {
         return this.password;
     }
 
+    public String toString() { return " " + name + " " + surname;}
+
 
 
 }

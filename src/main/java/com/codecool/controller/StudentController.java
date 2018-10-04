@@ -10,6 +10,7 @@ import java.util.List;
 
 public class StudentController {
 
+    private  List<Assignment> assignmentList;
     private StudentDAO studentDAO;
     private User student;
     private View view;
@@ -21,6 +22,7 @@ public class StudentController {
         this.student = studentUser;
         this.studentDAO = new StudentDAO();
         this.view = new View();
+        this.assignmentList = studentDAO.loadAssignments(student.getLogin());
     }
 
     public void manageStudent() {
@@ -35,9 +37,14 @@ public class StudentController {
             int userMenuOption = view.getUserMenuOption();
 
             if (userMenuOption == submitAssignmentOption) {
-                // TODO
+                view.printGradedAssigmentForStudent(getDataAssignmentList());
+                view.printGetTitle();
+                String assignmentTitle = view.getStringInput();
+                view.printGetLink();
+                String assignmentLink = view.getStringInput();
+                submitAssignment(assignmentTitle, assignmentLink);
             } else if (userMenuOption == viewGradesOption) {
-                // TODO
+                view.printGradedAssigmentForStudent(getDataAssignmentList());
             } else if (userMenuOption == logOutOption) {
                 exit = true;
             } else {
@@ -46,11 +53,14 @@ public class StudentController {
         }
     }
 
-    List<Assignment> assignmentList = new ArrayList<>();
+    public void submitAssignment(String assignmentTitle, String assignmentLink) {
 
-    public void submitAssignment(String assignmentTittle, String assignmentLink) {
-        Assignment assignment = new Assignment(assignmentTittle, assignmentLink, "status", "note");     // Student should not make new assignments - student should operate on assignment from dataAssignmentList!!!
-        assignmentList.add(assignment);
+        for(Assignment assignment: assignmentList){
+            if(assignment.getAssignmentTittle().equals(assignmentTitle)){
+                assignment.setAssignmentLink(assignmentLink);
+                studentDAO.updateAssignment(StudentDAO.AssignmentParameters.GIT_HUB_LINK, student.getLogin(), assignmentLink);
+            }
+        }
     }
 
     public List getDataAssignmentList() {

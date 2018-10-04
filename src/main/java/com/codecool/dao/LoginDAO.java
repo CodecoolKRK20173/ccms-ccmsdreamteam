@@ -1,12 +1,11 @@
 package com.codecool.dao;
 
-import com.codecool.model.User;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -19,6 +18,7 @@ import java.util.List;
 public class LoginDAO implements LoginDAOinter {
 
     private Document userData;
+    private String[] userTypes = {"mentor", "student", "employee", "admin"};
 
     public LoginDAO() {
         parseXMLToDocument();
@@ -46,10 +46,10 @@ public class LoginDAO implements LoginDAOinter {
 
     @Override
     public boolean checkPassword(String login, String potentialPassword) {
+        parseXMLToDocument();
         boolean isPasswordCorrect = false;
         String password;
         String currentLogin;
-        String[] userTypes = {"mentor", "student", "employee", "admin"};
         for (int j = 0; j < userTypes.length; j++) {
             NodeList userNodes = userData.getElementsByTagName(userTypes[j]);
             for (int i = 0; i < userNodes.getLength(); i++) {
@@ -61,12 +61,8 @@ public class LoginDAO implements LoginDAOinter {
                         password = userElement.getElementsByTagName("password").item(0).getTextContent();
                         if (password.equals(potentialPassword)) {
                             isPasswordCorrect = true;
-                            break;
                         }
                     }
-                }
-                if (isPasswordCorrect) {
-                    break;
                 }
             }
         }
@@ -76,13 +72,7 @@ public class LoginDAO implements LoginDAOinter {
     public List<String> getUserDataList(String login) {
 
         List<String> userDataList = new ArrayList<>();
-
         String currentLogin;
-        String type;
-        String name;
-        String surname;
-        String password;
-        String[] userTypes = {"mentor", "student", "employee", "admin"};
         for (int j = 0; j < userTypes.length; j++) {
             NodeList userNodes = userData.getElementsByTagName(userTypes[j]);
             for (int i = 0; i < userNodes.getLength(); i++) {
@@ -91,15 +81,25 @@ public class LoginDAO implements LoginDAOinter {
                     Element userElement = (Element) userNode;
                     currentLogin = userElement.getAttribute("login");
                     if (currentLogin.equals(login)) {
-                        type = userElement.getTagName();
-                        name = userElement.getElementsByTagName("name").item(0).getTextContent();
-                        surname = userElement.getElementsByTagName("surname").item(0).getTextContent();
-                        password = userElement.getElementsByTagName("password").item(0).getTextContent();
-                        userDataList = Arrays.asList(type, login, name, surname, password);
+                        userDataList = parseUserDataToList(login, userElement);
                     }
                 }
             }
         }
+        return userDataList;
+    }
+
+    private List<String> parseUserDataToList(String login, Element userElement) {
+        String type;
+        String name;
+        String surname;
+        String password;
+        List<String> userDataList;
+        type = userElement.getTagName();
+        name = userElement.getElementsByTagName("name").item(0).getTextContent();
+        surname = userElement.getElementsByTagName("surname").item(0).getTextContent();
+        password = userElement.getElementsByTagName("password").item(0).getTextContent();
+        userDataList = Arrays.asList(type, login, name, surname, password);
         return userDataList;
     }
 }

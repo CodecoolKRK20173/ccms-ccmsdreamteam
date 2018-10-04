@@ -1,3 +1,4 @@
+
 package com.codecool.dao;
 
 import com.codecool.model.Assignment;
@@ -9,6 +10,12 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +27,23 @@ public class StudentDAO implements StudentDAOinter {
 
     public StudentDAO() {
         parseXMLToDocument();
+    }
+
+    private void saveToXMLDocument() {
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = null;
+        try {
+            transformer = transformerFactory.newTransformer();
+        } catch (TransformerConfigurationException e) {
+            e.printStackTrace();
+        }
+        DOMSource source = new DOMSource(userData);
+        StreamResult result = new StreamResult(openFile("src/main/resources/Assignment.xml"));
+        try {
+            transformer.transform(source, result);
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        }
     }
 
     private void parseXMLToDocument() {
@@ -43,17 +67,23 @@ public class StudentDAO implements StudentDAOinter {
     }
 
     public enum AssignmentParameters {
-        GIT_HUB_LINK("linkToRepository"),
-        NOTE("note");
+        GIT_HUB_LINK("linkToRepository", "Waiting for revision"),
+        NOTE("note", "Noted");
 
         private String parameter;
+        private String newStatus;
 
-        private AssignmentParameters(String parameter) {
+        AssignmentParameters(String parameter, String newStatus) {
             this.parameter = parameter;
+            this.newStatus = newStatus;
         }
 
         public String getTextContent() {
             return this.parameter;
+        }
+
+        public String getStatus() {
+            return this.newStatus;
         }
     }
 
@@ -65,19 +95,11 @@ public class StudentDAO implements StudentDAOinter {
             NodeList studentAssignments = student.getElementsByTagName("assignment");
             for (int i=0; i<studentAssignments.getLength(); i++) {
                 Node studentNode = studentAssignments.item(i);
-                String newStatus = "";
                 if (studentNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element studentElement = (Element) studentNode;
-                    switch(assignmentParameter) {
-                        case NOTE:
-                            newStatus = "Noted";
-                            break;
-                        case GIT_HUB_LINK:
-                            newStatus = "Waiting for revision";
-                            break;
-                    }
                     studentElement.getElementsByTagName(assignmentParameterString).item(0).setTextContent(newEntry);
-                    studentElement.setAttribute("status", newStatus);
+                    studentElement.setAttribute("status", assignmentParameter.getStatus());
+                    saveToXMLDocument();
                 }
             }
         }
@@ -89,17 +111,17 @@ public class StudentDAO implements StudentDAOinter {
         Element student = searchForStudent(students, login);
         if (student != null) {
             NodeList studentAssignments = student.getElementsByTagName("assignment");
-            parseElementsToAssignments(assignmentList, studentAssignments);
+            deserializeToAssignments(assignmentList, studentAssignments);
         }
         return assignmentList;
     }
 
-    private void parseElementsToAssignments(List<Assignment> assignmentList, NodeList studentAssignments) {
+    private void deserializeToAssignments(List<Assignment> assignmentList, NodeList studentAssignments) {
         for (int j = 0; j < studentAssignments.getLength(); j++) {
             Node studentAssignment = studentAssignments.item(j);
             if (studentAssignment.getNodeType() == Node.ELEMENT_NODE) {
                 Element studentAssignmentElement = (Element) studentAssignment;
-                parseElementToAssignment(assignmentList, studentAssignmentElement);
+                deserializeToAssignment(assignmentList, studentAssignmentElement);
             }
         }
     }
@@ -118,7 +140,7 @@ public class StudentDAO implements StudentDAOinter {
         return studentElement;
     }
 
-    private void parseElementToAssignment(List<Assignment> assignmentList, Element studentAssignmentElement) {
+    private void deserializeToAssignment(List<Assignment> assignmentList, Element studentAssignmentElement) {
         String assignmentName = studentAssignmentElement.getAttribute("name");
         String status = studentAssignmentElement.getAttribute("status");
         String linkToRepository = studentAssignmentElement.getElementsByTagName("linkToRepository").
