@@ -50,9 +50,9 @@ public class LoginDAO implements LoginDAOinter {
         String password;
         String currentLogin;
         String[] userTypes = {"mentor", "student", "employee", "admin"};
-        for (int j = 0; j < userTypes.length || isPasswordCorrect; j++) {
+        for (int j = 0; j < userTypes.length; j++) {
             NodeList userNodes = userData.getElementsByTagName(userTypes[j]);
-            for (int i = 0; i < userNodes.getLength() || isPasswordCorrect; i++) {
+            for (int i = 0; i < userNodes.getLength(); i++) {
                 Node userNode = userNodes.item(i);
                 if (userNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element userElement = (Element) userNode;
@@ -61,8 +61,12 @@ public class LoginDAO implements LoginDAOinter {
                         password = userElement.getElementsByTagName("password").item(0).getTextContent();
                         if (password.equals(potentialPassword)) {
                             isPasswordCorrect = true;
+                            break;
                         }
                     }
+                }
+                if (isPasswordCorrect) {
+                    break;
                 }
             }
         }
@@ -73,7 +77,7 @@ public class LoginDAO implements LoginDAOinter {
 
         List<String> userDataList = new ArrayList<>();
 
-                String currentLogin;
+        String currentLogin;
         String type;
         String name;
         String surname;
@@ -87,11 +91,11 @@ public class LoginDAO implements LoginDAOinter {
                     Element userElement = (Element) userNode;
                     currentLogin = userElement.getAttribute("login");
                     if (currentLogin.equals(login)) {
-                        type = userElement.getElementsByTagName("type").item(0).getTextContent();
+                        type = userElement.getAttribute("login");
                         name = userElement.getElementsByTagName("name").item(0).getTextContent();
                         surname = userElement.getElementsByTagName("surname").item(0).getTextContent();
                         password = userElement.getElementsByTagName("password").item(0).getTextContent();
-                        Arrays.asList(type, login, name, surname, password);
+                        userDataList = Arrays.asList(type, login, name, surname, password);
                     }
                 }
             }
