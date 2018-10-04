@@ -1,6 +1,8 @@
 package com.codecool.controller;
 
 import com.codecool.dao.MentorDAO;
+import com.codecool.model.Assignment;
+import com.codecool.model.Gradeable;
 import com.codecool.model.User;
 import com.codecool.view.View;
 
@@ -62,9 +64,17 @@ public class MentorController {
         }
     }
 
-    public void addAssigmen(){
-
-    }
+//    public void addAssigmen(){
+////        view.askMentorToSetTitle();
+////        String assigmentTitle = view.getStringInput();
+//        String assigmentLink = "";
+//        String status = "Waiting for submission";
+//        String note = "0";
+//        Gradeable newAssigment = new Assignment(assigmentTitle, assigmentLink, status, note);
+//
+//
+//
+//    }
 
     public boolean gradeAssigment(boolean isPositiveGrade){
         return isPositiveGrade;

@@ -2,7 +2,6 @@ package com.codecool.dao;
 
 import com.codecool.model.Mentor;
 import com.codecool.model.User;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
