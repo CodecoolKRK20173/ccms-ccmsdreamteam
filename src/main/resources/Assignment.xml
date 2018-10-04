@@ -2,7 +2,7 @@
     <student login="ja">
         <assignments>
             <assignment name="assignment1" status="Waiting for revision">
-                <linkToRepository>www.github1.com</linkToRepository>
+                <linkToRepository>github.com/jakisprojekt</linkToRepository>
                 <note>0</note>
             </assignment>
         </assignments>

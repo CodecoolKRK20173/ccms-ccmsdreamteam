@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <users>
     <mentors>
-        
-        
-    <mentor login="test">
-<name>Edgar</name>
-<surname>Davids</surname>
-<password>juve</password>
-</mentor>
-        
-    <mentor login="aga">
-<name>agnieszka</name>
-<surname>kosz</surname>
-<password>kot</password>
-</mentor>
-<mentor login="jodla">
-<name>Krzysztof</name>
-<surname>Jodlowski</surname>
-<password>jodla123</password>
+        <mentor login="test">
+            <name>Edgar</name>
+            <surname>Davids</surname>
+            <password>juve</password>
+        </mentor>
+        <mentor login="frank">
+                <name>Frank</name>
+                <surname>Sinatra</surname>
+                <password>chocolate</password>
+        </mentor>
+    <mentor login="franciszek">
+<name>Franciszek</name>
+<surname>Benedict</surname>
+<password>zbychu</password>
 </mentor>
 </mentors>
     <students>
@@ -26,15 +23,10 @@
             <surname>Wyrobek</surname>
             <password>heheheh</password>
         </student>
-        <student login="krzys">
-            <name>Krzysztof</name>
-            <surname>P</surname>
-            <password>java</password>
-            </student>
-    <student login="mihu">
-<name>Michal</name>
-<surname>W</surname>
-<password>coach</password>
+        <student login="stach">
+<name>chudyByk</name>
+<surname>lubiepopcorn</surname>
+<password>lubiepopcorn</password>
 </student>
 </students>
     <employees>

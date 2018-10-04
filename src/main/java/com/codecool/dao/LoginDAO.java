@@ -46,6 +46,7 @@ public class LoginDAO implements LoginDAOinter {
 
     @Override
     public boolean checkPassword(String login, String potentialPassword) {
+        parseXMLToDocument();
         boolean isPasswordCorrect = false;
         String password;
         String currentLogin;
@@ -60,12 +61,8 @@ public class LoginDAO implements LoginDAOinter {
                         password = userElement.getElementsByTagName("password").item(0).getTextContent();
                         if (password.equals(potentialPassword)) {
                             isPasswordCorrect = true;
-                            break;
                         }
                     }
-                }
-                if (isPasswordCorrect) {
-                    break;
                 }
             }
         }

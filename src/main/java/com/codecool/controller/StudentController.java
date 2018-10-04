@@ -2,10 +2,8 @@ package com.codecool.controller;
 
 import com.codecool.dao.StudentDAO;
 import com.codecool.model.Assignment;
-import com.codecool.model.Student;
 import com.codecool.model.User;
 import com.codecool.view.View;
-import sun.nio.ch.sctp.AssociationImpl;
 
 import java.util.ArrayList;
 import java.util.List;
