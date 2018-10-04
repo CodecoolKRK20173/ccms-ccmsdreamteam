@@ -81,14 +81,32 @@ public class View {
         }
         return userInput;
     }
+
+    public String getStringInput() {
+        Scanner scanner = new Scanner(System.in);
+        String stringInput = "";
+        try {
+            stringInput = scanner.nextLine();
+        } catch (InputMismatchException e) {
+            printErrorInputMessage();
+        }
+        return stringInput;
+    }
     public String getUserPassword() {
         return getUserLogin();
     }
+
     public void printErrorInputMessage() {
         System.out.println("Provide proper input!");
     }
+
     public void printWelcomeUser(String user) {
         System.out.println("Welcome" + user + "!");
     }
+
+    public void askMentorToSetTitle(){
+        System.out.println("Set assigment title: ");
+    }
+
 
 }
