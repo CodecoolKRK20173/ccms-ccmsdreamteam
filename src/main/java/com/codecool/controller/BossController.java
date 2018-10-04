@@ -42,10 +42,10 @@ public class BossController {
 
             if (userMenuOption == addMentorOption) {
                 User user = createUserObject("mentor");
-                bossDAO.addUserToDataBase(user, "mentors");
+                bossDAO.addMentorToDataBase(user);
             } else if (userMenuOption == removeMentorOption) {
                 String userToRemove = view.getStringInput("Enter  mentor's login to remove: ");
-                bossDAO.removeUserFromDataBase(userToRemove, "mentor");
+                bossDAO.removeMentorFromDataBase(userToRemove);
             } else if (userMenuOption == editMentorOption) {
                 String userToEdit = view.getStringInput("Enter  mentor's login to edit: ");
                 bossDAO.editUser(userToEdit, "mentor");

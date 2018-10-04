@@ -24,12 +24,14 @@ public class View {
         }
     }
     public void printListOfUsers(List<User> listOfUsers) {
+        printSeparateLine();
         int num = 1;
         for (User user : listOfUsers) {
             System.out.println("(" + num + ") " + user.getNameOfUser() + " " + user.getSurnameOfUser());
             System.out.println("Login: " + user.getLogin());
             num ++;
         }
+        printSeparateLine();
     }
 
     public void printGradedAssigmentForStudent(List<String> dataAssignmentList) {
@@ -100,7 +102,9 @@ public class View {
     }
 
     public void printWelcomeUser(String user) {
+        printSeparateLine();
         System.out.println("Welcome" + user + "!");
+        printSeparateLine();
     }
 
     public void printMessage(String message) {
@@ -114,6 +118,10 @@ public class View {
     }
     public void printGetLink() {
         System.out.print("Submit assignment link: ");
+    }
+
+    public void printSeparateLine() {
+        System.out.println("-------------------------------------------------------------------------");
     }
 
 }

@@ -6,6 +6,9 @@ import com.codecool.model.Assignment;
 import com.codecool.model.Gradeable;
 import com.codecool.model.User;
 import com.codecool.view.View;
+import com.codecool.model.Mentor;
+import com.codecool.model.Student;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +55,7 @@ public class MentorController {
             int userMenuOption = view.getUserMenuOption();
 
             if (userMenuOption == listStudentsOption) {
-                // TODO
+                view.printListOfUsers(mentorDAO.getUsersListByType("student"));
             } else if (userMenuOption == addAssignmentOption) {
                 // TODO
             } else if (userMenuOption == gradeAssignmentOption) {
@@ -60,11 +63,14 @@ public class MentorController {
             } else if (userMenuOption == viewStudentsAssigmentOption) {
                 view.printGradedAssigmentForStudent(viewStudentAssigments(view.getStringInput()));
             } else if (userMenuOption == addStudentOption) {
-                // TODO
+                User user = createUserObject("student");
+                mentorDAO.addUserToDataBase(user, "students");
             } else if (userMenuOption == removeStudentOption) {
-                // TODO
+                String userToRemove = view.getStringInput("Enter  students's login to remove: ");
+                mentorDAO.removeStudentFromDataBase(userToRemove);
             } else if (userMenuOption == editStudentsOption) {
-                // TODO
+                String userToEdit = view.getStringInput("Enter  student's login to edit: ");
+                mentorDAO.editUser(userToEdit, "student");
             } else if (userMenuOption == logOutOption) {
                 exit = true;
             } else {
@@ -134,5 +140,24 @@ public class MentorController {
 
     public void editStudent(){
 
+    }
+
+    public void checkAttendance(){
+
+    }
+
+    private User createUserObject(String kindOfUser) {
+        View view = new View();
+        String login = view.getStringInput("Enter a login of user");
+        String name = view.getStringInput("Enter a name of user");
+        String surname = view.getStringInput("Enter a surname of user");
+        String password = view.getStringInput("Enter a password of user");
+
+        if (kindOfUser.equals("mentor")) {
+            return new Mentor(login, name, surname, password);
+        }
+        else  {
+            return new Student(login, name, surname, password);
+        }
     }
 }
