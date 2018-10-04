@@ -2,14 +2,13 @@ package com.codecool.controller;
 
 import com.codecool.dao.MentorDAO;
 import com.codecool.dao.MentorDAOinter;
-import com.codecool.model.Assignment;
-import com.codecool.model.Gradeable;
-import com.codecool.model.User;
+import com.codecool.model.*;
 import com.codecool.view.View;
+import com.codecool.dao.UsersDAOinter;
 
 public class MentorController {
 
-    private MentorDAOinter mentorDAO;
+    private UsersDAOinter mentorDAO;
     private User mentor;
     private View view;
     private final String[] mentorMenu = {"List students",
@@ -24,7 +23,7 @@ public class MentorController {
     public MentorController(User mentorUser) {
         this.mentorDAO = new MentorDAO();
         this.mentor = mentorUser;
-        this.mentorDAO = new MentorDAO();
+
         this.view = new View();
     }
 
@@ -45,7 +44,7 @@ public class MentorController {
             int userMenuOption = view.getUserMenuOption();
 
             if (userMenuOption == listStudentsOption) {
-                // TODO
+                view.printListOfUsers(mentorDAO.getUsersListByType("student"));
             } else if (userMenuOption == addAssignmentOption) {
                 // TODO
             } else if (userMenuOption == gradeAssignmentOption) {
@@ -53,11 +52,14 @@ public class MentorController {
             } else if (userMenuOption == checkAttendanceOption) {
                 // TODO
             } else if (userMenuOption == addStudentOption) {
-                // TODO
+                User user = createUserObject("student");
+                mentorDAO.addUserToDataBase(user, "students");
             } else if (userMenuOption == removeStudentOption) {
-                // TODO
+                String userToRemove = view.getStringInputFromUser("Enter  students's login to remove: ");
+                mentorDAO.removeUserFromDataBase(userToRemove, "student");
             } else if (userMenuOption == editStudentsOption) {
-                // TODO
+                String userToEdit = view.getStringInputFromUser("Enter  student's login to edit: ");
+                mentorDAO.editUser(userToEdit, "student");
             } else if (userMenuOption == logOutOption) {
                 exit = true;
             } else {
@@ -96,5 +98,20 @@ public class MentorController {
 
     public void checkAttendance(){
 
+    }
+
+    private User createUserObject(String kindOfUser) {
+        View view = new View();
+        String login = view.getStringInputFromUser("Enter a login of user");
+        String name = view.getStringInputFromUser("Enter a name of user");
+        String surname = view.getStringInputFromUser("Enter a surname of user");
+        String password = view.getStringInputFromUser("Enter a password of user");
+
+        if (kindOfUser.equals("mentor")) {
+            return new Mentor(login, name, surname, password);
+        }
+        else  {
+            return new Student(login, name, surname, password);
+        }
     }
 }

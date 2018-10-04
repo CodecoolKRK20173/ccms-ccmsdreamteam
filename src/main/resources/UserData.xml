@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?><users>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<users>
     <mentors>
         
         
@@ -6,14 +7,36 @@
 <name>Edgar</name>
 <surname>Davids</surname>
 <password>juve</password>
-</mentor></mentors>
+</mentor>
+        
+    <mentor login="aga">
+<name>agnieszka</name>
+<surname>kosz</surname>
+<password>kot</password>
+</mentor>
+<mentor login="jodla">
+<name>Krzysztof</name>
+<surname>Jodlowski</surname>
+<password>jodla123</password>
+</mentor>
+</mentors>
     <students>
         <student login="ja">
             <name>Stanisław</name>
             <surname>Wyrobek</surname>
             <password>heheheh</password>
         </student>
-        </students>
+        <student login="krzys">
+            <name>Krzysztof</name>
+            <surname>P</surname>
+            <password>java</password>
+            </student>
+    <student login="mihu">
+<name>Michal</name>
+<surname>W</surname>
+<password>coach</password>
+</student>
+</students>
     <employees>
         <employee login="pracownik">
             <name>Jan</name>
@@ -24,7 +47,7 @@
     <admins>
         <admin login="admin">
             <name>Jerzy</name>
-            <Surname>Niewiem</Surname>
+            <surname>Niewiem</surname>
             <password>admin</password>
         </admin>
     </admins>

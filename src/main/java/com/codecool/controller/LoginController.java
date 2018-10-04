@@ -25,7 +25,7 @@ public class LoginController {
         String userPassword = userParameters.get(4);
         User user = null;
 
-        if (userType.equals("boss")) {
+        if (userType.equals("admin")) {
             user = new Boss(userLogin, userName, userSurname, userPassword);
         } else if (userType.equals("mentor")) {
             user = new Mentor(userLogin, userName, userSurname, userPassword);

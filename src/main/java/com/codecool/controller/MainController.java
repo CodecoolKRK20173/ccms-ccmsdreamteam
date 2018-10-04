@@ -69,6 +69,7 @@ public class MainController {
     }
     private void createUserSession(String login) {
         User user = loginController.getUser(login);
+        System.out.println("tworzy");
 
         if (user instanceof Boss) {
             new BossController(user).manageBoss();
